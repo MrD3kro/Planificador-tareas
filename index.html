@@ -54,31 +54,42 @@
                         <div class="col-6">
                             <div class="board-col">
                                 <h3 class="h6 mb-3">In progress</h3>
-                                <div class="task d-flex align-items-center gap-2 mb-2">
-                                    <input class="form-check-input mt-0" type="checkbox">
-                                    <span class="flex-grow-1">Tarea</span>
-                                    <span class="badge text-bg-secondary">25:00</span>
-                                </div>
-                                <div class="task mb-2">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <input class="form-check-input mt-0" type="checkbox">
-                                        <span class="flex-grow-1">Tarea 2</span>
-                                        <span class="badge text-bg-secondary">12:40</span>
-                                    </div>
-                                    <div class="btn-group btn-group-sm w-100 mt-2">
-                                        <button class="btn btn-outline-secondary">−</button>
-                                        <button class="btn btn-outline-secondary">Stop</button>
-                                        <button class="btn btn-outline-secondary">+</button>
-                                    </div>
+                                <div class="task-list d-flex flex-column gap-3">
+                                    <article class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <input class="form-check-input mt-1" type="checkbox"
+                                                    aria-label="Marcar como hecha">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0">Preparar presentación del
+                                                    sprint</h4>
+                                                <span class="badge estado">En progreso</span>
+                                            </div>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Armar las diapositivas
+                                                con los avances de la semana.</p>
+                                        </div>
+                                        <div class="card-footer small text-secondary">Entrega: 30 oct 2026</div>
+                                    </article>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="board-col">
                                 <h3 class="h6 mb-3">Done</h3>
-                                <div class="task d-flex align-items-center gap-2">
-                                    <input class="form-check-input mt-0" type="checkbox" checked>
-                                    <span class="flex-grow-1 text-decoration-line-through text-secondary">Tarea</span>
+                                <div class="task-list d-flex flex-column gap-3">
+                                    <article class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <input class="form-check-input mt-1" type="checkbox" checked
+                                                    aria-label="Marcar como pendiente">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0 text-decoration-line-through">
+                                                    Entregar wireframe</h4>
+                                                <span class="badge estado estado-done">Hecha</span>
+                                            </div>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Subir el wireframe de
+                                                las dos vistas al repositorio.</p>
+                                        </div>
+                                        <div class="card-footer small text-secondary">Entrega: 27 oct 2026</div>
+                                    </article>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +104,8 @@
             </section>
         </main>
 
-        <nav class="dock nav nav-pills position-fixed bottom-0 start-50 translate-middle-x mb-3 p-1 rounded-pill shadow">
+        <nav
+            class="dock nav nav-pills position-fixed bottom-0 start-50 translate-middle-x mb-3 p-1 rounded-pill shadow">
             <button class="nav-link rounded-pill active" data-go="day" onclick="setView('day')">Day</button>
             <button class="nav-link rounded-pill" data-go="month" onclick="setView('month')">Month</button>
         </nav>

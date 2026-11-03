@@ -92,12 +92,22 @@
     padding: 16px;
 }
 
-.task {
-    min-height: 64px;
-    background: var(--surface);
-    border: 1px solid var(--bs-border-color);
-    border-radius: 10px;
-    padding: 12px;
+.card {
+    --bs-card-bg: var(--surface);
+    --bs-card-border-color: var(--bs-border-color);
+    --bs-card-cap-bg: var(--soft);
+    --bs-card-color: var(--bs-body-color);
+    --bs-card-border-radius: 10px;
+}
+
+.estado {
+    background: #F8E7A6;
+    color: #2E2540;
+    font-weight: 500;
+}
+
+.estado-done {
+    background: #BFE3C8;
 }
 
 .dock {
@@ -126,7 +136,7 @@
     overflow: hidden;
 }
 
-.cal > div {
+.cal>div {
     min-height: 64px;
     padding: 6px;
     font-size: .8rem;
