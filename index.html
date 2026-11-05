@@ -50,6 +50,68 @@
 
                 <div data-only="day">
                     <h2 class="h5 mb-3">Planificador day</h2>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="card" id="modalAgregarTarea">
+                                        <form class="needs-validation" id="newTaskForm" novalidate>
+                                            <div class="mb-3">
+                                                <label for="newTaskNameInput" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="newTaskNameInput" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    El nombre no puede estar vacio.
+                                                </div>
+
+
+                                                <label for="newTaskDescriptionInput"
+                                                    class="form-label">Descripcion</label>
+                                                <textarea class="form-control" rows="3" name="description"
+                                                    id="newTaskDescriptionInput" required></textarea>
+
+                                                <label for="newTaskDateInput" class="form-label">Fecha de
+                                                    Entrega</label>
+                                                <input type="date" class="form-control" id="newTaskDateInput" required>
+
+                                                <label for="newTaskStatus" class="form-label">Estado</label>
+                                                <select class="form-select" name="" id="newTaskStatus" required>
+                                                    <option value="" selected>Seleccione una opcion</option>
+                                                    <option value="pendiente">Pendiente</option>
+                                                    <option value="en progreso">En progreso</option>
+                                                    <option value="Hecha">Hecha</option>
+
+                                                </select>
+
+
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit" form="newTaskForm">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="board-col">
@@ -58,33 +120,41 @@
                                     <article class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-start gap-2">
-                                                <input class="form-check-input mt-1" type="checkbox" aria-label="Marcar como hecha">
-                                                <h4 class="h6 card-title flex-grow-1 mb-0">Preparar presentación del sprint</h4>
+                                                <input class="form-check-input mt-1" type="checkbox"
+                                                    aria-label="Marcar como hecha">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0">Preparar presentación del
+                                                    sprint</h4>
                                                 <span class="badge estado">En progreso</span>
                                             </div>
-                                            <p class="card-text small text-secondary mt-2 mb-0">Armar las diapositivas con los avances de la semana.</p>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Armar las diapositivas
+                                                con los avances de la semana.</p>
                                         </div>
                                         <div class="card-footer small text-secondary">Entrega: 12 nov 2026</div>
                                     </article>
                                     <article class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-start gap-2">
-                                                <input class="form-check-input mt-1" type="checkbox" aria-label="Marcar como hecha">
+                                                <input class="form-check-input mt-1" type="checkbox"
+                                                    aria-label="Marcar como hecha">
                                                 <h4 class="h6 card-title flex-grow-1 mb-0">Repasar consultas SQL</h4>
                                                 <span class="badge estado">En progreso</span>
                                             </div>
-                                            <p class="card-text small text-secondary mt-2 mb-0">Practicar JOIN y GROUP BY con los ejercicios de clase.</p>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Practicar JOIN y GROUP
+                                                BY con los ejercicios de clase.</p>
                                         </div>
                                         <div class="card-footer small text-secondary">Entrega: 14 nov 2026</div>
                                     </article>
                                     <article class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-start gap-2">
-                                                <input class="form-check-input mt-1" type="checkbox" aria-label="Marcar como hecha">
-                                                <h4 class="h6 card-title flex-grow-1 mb-0">Redactar el informe del laboratorio</h4>
+                                                <input class="form-check-input mt-1" type="checkbox"
+                                                    aria-label="Marcar como hecha">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0">Redactar el informe del
+                                                    laboratorio</h4>
                                                 <span class="badge estado estado-pendiente">Pendiente</span>
                                             </div>
-                                            <p class="card-text small text-secondary mt-2 mb-0">Escribir las conclusiones y adjuntar capturas de los resultados.</p>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Escribir las
+                                                conclusiones y adjuntar capturas de los resultados.</p>
                                         </div>
                                         <div class="card-footer small text-secondary">Entrega: 20 nov 2026</div>
                                     </article>
@@ -98,22 +168,28 @@
                                     <article class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-start gap-2">
-                                                <input class="form-check-input mt-1" type="checkbox" checked aria-label="Marcar como pendiente">
-                                                <h4 class="h6 card-title flex-grow-1 mb-0 text-decoration-line-through">Entregar wireframe</h4>
+                                                <input class="form-check-input mt-1" type="checkbox" checked
+                                                    aria-label="Marcar como pendiente">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0 text-decoration-line-through">
+                                                    Entregar wireframe</h4>
                                                 <span class="badge estado estado-done">Hecha</span>
                                             </div>
-                                            <p class="card-text small text-secondary mt-2 mb-0">Subir el wireframe de las dos vistas al repositorio.</p>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Subir el wireframe de
+                                                las dos vistas al repositorio.</p>
                                         </div>
                                         <div class="card-footer small text-secondary">Entrega: 27 oct 2026</div>
                                     </article>
                                     <article class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-start gap-2">
-                                                <input class="form-check-input mt-1" type="checkbox" checked aria-label="Marcar como pendiente">
-                                                <h4 class="h6 card-title flex-grow-1 mb-0 text-decoration-line-through">Configurar el repositorio en GitHub</h4>
+                                                <input class="form-check-input mt-1" type="checkbox" checked
+                                                    aria-label="Marcar como pendiente">
+                                                <h4 class="h6 card-title flex-grow-1 mb-0 text-decoration-line-through">
+                                                    Configurar el repositorio en GitHub</h4>
                                                 <span class="badge estado estado-done">Hecha</span>
                                             </div>
-                                            <p class="card-text small text-secondary mt-2 mb-0">Crear el repositorio y subir el primer commit del proyecto.</p>
+                                            <p class="card-text small text-secondary mt-2 mb-0">Crear el repositorio y
+                                                subir el primer commit del proyecto.</p>
                                         </div>
                                         <div class="card-footer small text-secondary">Entrega: 3 nov 2026</div>
                                     </article>
@@ -131,9 +207,15 @@
             </section>
         </main>
 
-        <nav class="dock nav nav-pills position-fixed bottom-0 start-50 translate-middle-x mb-3 p-1 rounded-pill shadow">
+        <nav
+            class="dock nav nav-pills position-fixed bottom-0 start-50 translate-middle-x mb-3 p-1 rounded-pill shadow">
             <button class="nav-link rounded-pill active" data-go="day" onclick="setView('day')">Day</button>
             <button class="nav-link rounded-pill" data-go="month" onclick="setView('month')">Month</button>
+            <button type="button" class="btn btn-primary nav-link rounded-pill" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                +
+            </button>
+
         </nav>
         <button class="btn btn-primary fab rounded-circle position-fixed bottom-0 start-0 m-3"
             aria-label="Ayuda">?</button>
@@ -143,27 +225,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script>
-        const app = document.getElementById('app');
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        function setView(v) {
-            document.querySelectorAll('[data-only]').forEach(e => e.hidden = e.dataset.only !== v);
-            document.querySelectorAll('[data-go]').forEach(b => b.classList.toggle('active', b.dataset.go === v));
-        }
-
-        function toggleTheme() {
-            app.dataset.bsTheme = app.dataset.bsTheme === 'dark' ? 'light' : 'dark';
-        }
-
-        const cal = document.getElementById('cal');
-        ['L', 'M', 'X', 'J', 'V', 'S', 'D'].forEach(d => cal.insertAdjacentHTML('beforeend', `<div class="dow">${d}</div>`));
-        const ev = { 15: ['Estudio', '#F6C6D8'], 28: ['Tarea 1', '#BFE3C8'], 30: ['Entrega', '#F8E7A6'] };
-        for (let i = 0; i < 35; i++) {
-            const n = i - 2, e = ev[n];
-            cal.insertAdjacentHTML('beforeend',
-                `<div class="${n === 28 ? 'today' : ''}">${n > 0 && n <= 31 ? n : ''}${e ? `<span class="ev" style="background:${e[1]}">${e[0]}</span>` : ''}</div>`);
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
