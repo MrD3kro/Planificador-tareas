@@ -110,6 +110,10 @@
     background: #BFE3C8;
 }
 
+.estado-pendiente {
+    background: #F6C6D8;
+}
+
 .dock {
     background: var(--surface);
     border: 1px solid var(--bs-border-color);
@@ -136,7 +140,7 @@
     overflow: hidden;
 }
 
-.cal>div {
+.cal > div {
     min-height: 64px;
     padding: 6px;
     font-size: .8rem;
