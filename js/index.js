@@ -1,3 +1,5 @@
+
+
 const newTaksForm = document.querySelector('#newTaskForm');
 const newTaskNameInput = document.querySelector('#newTaskNameInput');
 const newTaskDescriptionInput = document.querySelector('#newTaskDescriptionInput')
@@ -69,7 +71,8 @@ function validFormFielInput(data){
 }
 
   
-  
+const taskManager = new TaskManager();
+console.log(taskManager.tasks); 
   
 const app = document.getElementById('app');
 
@@ -90,3 +93,35 @@ const app = document.getElementById('app');
             cal.insertAdjacentHTML('beforeend',
                 `<div class="${n === 28 ? 'today' : ''}">${n > 0 && n <= 31 ? n : ''}${e ? `<span class="ev" style="background:${e[1]}">${e[0]}</span>` : ''}</div>`);
         }
+
+
+        // Cambia el texto y las clases del badge según el estado
+function setEstado(badge, estado) {
+    badge.classList.remove('estado-pendiente', 'estado-done');
+    if (estado === 'Pendiente') badge.classList.add('estado-pendiente');
+    if (estado === 'Hecha') badge.classList.add('estado-done');
+    badge.textContent = estado;
+}
+
+document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (checkbox) {
+    const card = checkbox.closest('.card');
+    const title = card.querySelector('.card-title');
+    const badge = card.querySelector('.estado');
+
+    // Estado al que vuelve si se desmarca:
+    // si ya estaba "Hecha" vuelve a "Pendiente", si no, a la que tenía
+    const estadoPrevio = badge.textContent === 'Hecha' ? 'Pendiente' : badge.textContent;
+
+    checkbox.addEventListener('change', function () {
+        // Tachado según el estado del checkbox
+        title.classList.toggle('text-decoration-line-through', checkbox.checked);
+
+        if (checkbox.checked) {
+            setEstado(badge, 'Hecha');
+            checkbox.setAttribute('aria-label', 'Marcar como pendiente');
+        } else {
+            setEstado(badge, estadoPrevio);
+            checkbox.setAttribute('aria-label', 'Marcar como hecha');
+        }
+    });
+});
