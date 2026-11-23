@@ -37,11 +37,21 @@ newTaksForm.addEventListener('submit', function(event){
         
     }
     if (errors.length == 0 ) {
+
        Swal.fire({
   title: "Bien hecho!",
   text: "Se agregó tu tarea",
   icon: "success"
 });
+
+    taskManager.addTask( 
+        nombre = data.name,
+        description = data.description,
+        dueDate = data.date,
+        estado = data.status
+
+    );
+    newTaskForm.reset();
     }
    
 })
@@ -70,9 +80,22 @@ function validFormFielInput(data){
     return errors;
 }
 
-  
 const taskManager = new TaskManager();
-console.log(taskManager.tasks); 
+taskManager.addTask(
+ 'Sacar la basura',
+ 'Sacar la basura al frente de la casa',
+ '2020-09-20',
+ 'PORHACER'
+);
+
+taskManager.addTask(
+ 'Hacer de cenar',
+ 'Preparar la cena para la familia',
+ '2020-09-20',
+ 'PORHACER'
+);
+
+console.log(taskManager.tasks);
   
 const app = document.getElementById('app');
 
@@ -125,3 +148,5 @@ document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function 
         }
     });
 });
+
+
