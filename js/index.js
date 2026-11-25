@@ -51,7 +51,9 @@ newTaksForm.addEventListener('submit', function(event){
         estado = data.status
 
     );
-    newTaskForm.reset();
+    taskManager.save();
+    taskManager.render();
+    newTaksForm.reset();
     }
    
 })
@@ -81,21 +83,28 @@ function validFormFielInput(data){
 }
 
 const taskManager = new TaskManager();
-taskManager.addTask(
- 'Sacar la basura',
- 'Sacar la basura al frente de la casa',
- '2020-09-20',
- 'PORHACER'
-);
+taskManager.load();
 
-taskManager.addTask(
- 'Hacer de cenar',
- 'Preparar la cena para la familia',
- '2020-09-20',
- 'PORHACER'
-);
+if (taskManager.tasks.length === 0 && localStorage.getItem('tasks') === null) {
+    taskManager.addTask(
+     'Sacar la basura',
+     'Sacar la basura al frente de la casa',
+     '2020-09-20',
+     'PORHACER'
+    );
+
+    taskManager.addTask(
+     'Hacer de cenar',
+     'Preparar la cena para la familia',
+     '2020-09-20',
+     'PORHACER'
+    );
+
+    taskManager.save();
+}
 
 console.log(taskManager.tasks);
+taskManager.render();
   
 const app = document.getElementById('app');
 
@@ -118,33 +127,35 @@ const app = document.getElementById('app');
         }
 
 
-        // Cambia el texto y las clases del badge según el estado
-function setEstado(badge, estado) {
-    badge.classList.remove('estado-pendiente', 'estado-done');
-    if (estado === 'Pendiente') badge.classList.add('estado-pendiente');
-    if (estado === 'Hecha') badge.classList.add('estado-done');
-    badge.textContent = estado;
-}
+document.querySelectorAll('.task-list').forEach(function (taskList) {
+    taskList.addEventListener('change', function (event) {
+        if (!event.target.matches('input[type="checkbox"]')) {
+            return;
+        }
 
-document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (checkbox) {
-    const card = checkbox.closest('.card');
-    const title = card.querySelector('.card-title');
-    const badge = card.querySelector('.estado');
+        const card = event.target.closest('.card');
+        const taskId = Number(card.dataset.taskId);
+        const task = taskManager.tasks.find(function (task) {
+            return task.id === taskId;
+        });
 
-    // Estado al que vuelve si se desmarca:
-    // si ya estaba "Hecha" vuelve a "Pendiente", si no, a la que tenía
-    const estadoPrevio = badge.textContent === 'Hecha' ? 'Pendiente' : badge.textContent;
+        if (!task) {
+            return;
+        }
 
-    checkbox.addEventListener('change', function () {
-        // Tachado según el estado del checkbox
-        title.classList.toggle('text-decoration-line-through', checkbox.checked);
+        task.status = event.target.checked ? 'Hecha' : 'POR HACER';
+        taskManager.save();
+        taskManager.render();
+    });
 
-        if (checkbox.checked) {
-            setEstado(badge, 'Hecha');
-            checkbox.setAttribute('aria-label', 'Marcar como pendiente');
-        } else {
-            setEstado(badge, estadoPrevio);
-            checkbox.setAttribute('aria-label', 'Marcar como hecha');
+    taskList.addEventListener('click', function (event) {
+        if (event.target.classList.contains('delete-button')) {
+            const parentTask = event.target.closest('.card');
+            const taskId = Number(parentTask.dataset.taskId);
+
+            taskManager.deleteTask(taskId);
+            taskManager.save();
+            taskManager.render();
         }
     });
 });
